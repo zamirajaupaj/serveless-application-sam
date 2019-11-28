@@ -33,7 +33,7 @@ $ sam package \
     -- profile $profileName \
     -- region $AwsRegion
 
-sam deploy \
+$ sam deploy \
     -- template-file packaged.yaml \
     -- stack-name $myStack \
     -- capabilities CAPABILITY_IAM \
