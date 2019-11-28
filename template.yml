@@ -1,59 +1,18 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  sam-app
-  Sample SAM Template for sam-app
-Globals:
-  Function:
-    Timeout: 3
-
+Description: Outputs the time
 Resources:
-  BasicApiGateway:
-    Type: AWS::Serverless::Api
-    Properties:
-      Name: Basic AWS Api Gateway
-      StageName: Staging
-
-  BasicFunction:
-    Type: AWS::Serverless::Function 
+  TimeFunction:
+    Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: nodejs10.x
       CodeUri: ./
-      Policies:
-        - AWSLambdaExecute # Managed Policy
-        - Version: '2012-10-17' # Policy Document
-          Statement:
-            - Effect: Allow
-              Action:
-                - logs:CreateLogGroup
-                - logs:CreateLogStream
-                - logs:PutLogEvents  
-              Resource: '*'
       Events:
-        HelloWorldApi:
+        MyTimeApi:
           Type: Api
           Properties:
-            RestApiId: !Ref BasicApiGateway
             Path: /TimeResource
             Method: GET
-
-
-  BasicAPIRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Action: sts:AssumeRole
-            Principal:
-              Service: apigateway.amazonaws.com
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AmazonApiGatewayPushToCloudWatchLogs
-
-  # Allow api gateway to create cloudwatch logs
-  ApiAccount:
-    Type: AWS::ApiGateway::Account
-    Properties: 
-      CloudWatchRoleArn: !GetAtt BasicAPIRole.Arn
+  Table: 
+    Type: AWS::Serverless::SimpleTable
