@@ -24,7 +24,7 @@ aws_session_token        = ccccccccccccccc
 $ git clone https://github.com/zamirajaupaj/serveless-application-sam.git
 $ cd serveless-application-sam
 ```
-# You can deploy easily from your local computer using this command
+### You can deploy easily from your local computer using this command
 ```
 $ sam package \
     -- template-file template.yaml \
@@ -41,6 +41,5 @@ sam deploy \
     -- region $AwsRegiom
 
 ```
-# You can upload the source code in CodeCommit that was created with terraform 
-
-[![Join the chat at https://gitter.im/Zamira-Jaupaj/serveless-application-sam](https://github.com/zamirajaupaj/ci-cd-sam)](https://github.com/zamirajaupaj/ci-cd-sam)
+### You can upload the source code in CodeCommit 
+[create Codecommit using terraform](https://github.com/zamirajaupaj/ci-cd-sam)
